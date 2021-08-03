@@ -221,6 +221,7 @@ bar {
 
 # Autostart:
 exec_always fcitx5 -d --replace
+exec mako -c /home/houge/.config/mako/config &
 #exec sleep 5s; megasync
 #exec copyq
 # Set Themes
