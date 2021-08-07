@@ -15,10 +15,17 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term alacritty
+
+# File Manager
+set $files nautilus -w /home/houge/
+
+# Browser
+set $browser vivaldi-stable
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu -fn "Ubuntu Bold 18" | xargs swaymsg exec --
+# set $menu dmenu_path | dmenu -fn "Ubuntu Bold 18" | xargs swaymsg exec --
+set $menu wofi
 
 ### Output configuration
 #
@@ -70,6 +77,12 @@ bindsym $mod+Shift+q kill
 
 # Start your launcher
 bindsym $mod+d exec $menu
+
+# Start my File Manager
+bindsym $mod+n exec $files
+
+# Start my Web Browser
+bindsym $mod+g exec $browser
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -254,6 +267,7 @@ bindsym $ps4 exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/ps_$(date +"%Y%m%d
 default_border pixel 4 # remove title bar
 gaps inner 3
 gaps outer 2
-for_window [class="^copyq$"] floating enable
+for_window [app_id="copyq"] floating enable
+for_window [app_id="megasync"] floating enable
 
 include /etc/sway/config.d/*
